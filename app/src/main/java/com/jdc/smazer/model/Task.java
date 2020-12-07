@@ -69,6 +69,23 @@ public class Task {
     }
 
     /**
+     * Este constructor inicia todos los datos de la tarea.
+     * 
+     * @param name        nombre de la tarea.
+     * @param description descripcion de la tarea.
+     * @param startTime   hora de inicio de la tarea.
+     * @param endTime     hora de finalizacion de la tarea.
+     */
+    public Task(String name, String description, String startTime, String endTime) {
+        this.setTaskName(name);
+        this.setTaskDescription(description);
+        String[] parts = startTime.split(":");
+        this.setTaskStartTime(LocalTime.of(Integer.valueOf(parts[0]), Integer.valueOf(parts[1]), Integer.valueOf(parts[2])));
+        parts = endTime.split(":");
+        this.setTaskEndTime(LocalTime.of(Integer.valueOf(parts[0]), Integer.valueOf(parts[1]), Integer.valueOf(parts[2])));
+    }
+
+    /**
      * Retorna el nombre de la tarea.
      * 
      * @return task name.
