@@ -1,13 +1,13 @@
 package com.jdc.smazer.model;
 
-import java.util.Date;
+import java.time.LocalTime;
 
 /**
  * Esta clase sirve para poder crear tareas que luego seran almacenadas en una
  * base de datos como tambien recuperadas de la base de datos.
  * 
  * @author jhon fernandez
- * @version 1.0.0
+ * @version 1.1.0
  */
 public class Task {
 
@@ -24,12 +24,12 @@ public class Task {
     /**
      * Hora de inicio de la tarea.
      */
-    private Date taskStartTime;
+    private LocalTime taskStartTime;
 
     /**
      * Hora de finalizacion de la tarea.
      */
-    private Date taskEndTime;
+    private LocalTime taskEndTime;
 
     /**
      * Constructor por defecto, no inicia ningun datos ya que los datos seran
@@ -46,7 +46,7 @@ public class Task {
      * @param startTime hora de inicio de la tarea.
      * @param endTime   hora de finalizacion de la tare.
      */
-    public Task(String name, Date startTime, Date endTime) {
+    public Task(String name, LocalTime startTime, LocalTime endTime) {
         this.setTaskName(name);
         this.setTaskDescription("Sin descripcion");
         this.setTaskStartTime(startTime);
@@ -61,7 +61,7 @@ public class Task {
      * @param startTime   hora de inicio de la tarea.
      * @param endTime     hora de finalizacion de la tarea.
      */
-    public Task(String name, String description, Date startTime, Date endTime) {
+    public Task(String name, String description, LocalTime startTime, LocalTime endTime) {
         this.setTaskName(name);
         this.setTaskDescription(description);
         this.setTaskStartTime(startTime);
@@ -109,7 +109,7 @@ public class Task {
      * 
      * @return task start time.
      */
-    public Date getTaskStartTime() {
+    public LocalTime getTaskStartTime() {
         return taskStartTime;
     }
 
@@ -118,7 +118,7 @@ public class Task {
      * 
      * @param taskStartTime task start time.
      */
-    public void setTaskStartTime(Date taskStartTime) {
+    public void setTaskStartTime(LocalTime taskStartTime) {
         this.taskStartTime = taskStartTime;
     }
 
@@ -127,7 +127,7 @@ public class Task {
      * 
      * @return task end time.
      */
-    public Date getTaskEndTime() {
+    public LocalTime getTaskEndTime() {
         return taskEndTime;
     }
 
@@ -136,7 +136,7 @@ public class Task {
      * 
      * @param taskEndTime task end time.
      */
-    public void setTaskEndTime(Date taskEndTime) {
+    public void setTaskEndTime(LocalTime taskEndTime) {
         this.taskEndTime = taskEndTime;
     }
 
