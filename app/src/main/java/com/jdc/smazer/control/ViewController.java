@@ -109,7 +109,7 @@ public class ViewController {
 
         this.toolMenuBar.addExitAction(e -> {
             int option = showConfirmDialog(this.mainWindow, "Esta seguro de salir?", "Confirme cierre", YES_NO_OPTION,
-                    QUESTION_MESSAGE);
+                    WARNING_MESSAGE);
             if (option == YES_NO_OPTION) {
                 System.exit(0);
             }
