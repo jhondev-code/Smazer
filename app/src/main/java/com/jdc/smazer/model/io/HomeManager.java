@@ -91,6 +91,8 @@ public class HomeManager {
                     return b.createNewFile();
                 } catch (IOException e) {
                     return false;
+                } finally {
+                    new DataBaseInitializer().initializeDateBase();
                 }
             }
 
