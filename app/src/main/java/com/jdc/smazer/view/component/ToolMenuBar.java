@@ -1,10 +1,8 @@
 package com.jdc.smazer.view.component;
 
-import javax.swing.AbstractButton;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+import javax.swing.*;
 
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 /**
@@ -71,22 +69,22 @@ public class ToolMenuBar extends JMenuBar {
         this.fileMenu = new JMenu("Archivo");
         this.add(this.fileMenu);
         {
-            this.importItem = new JMenuItem("Importar");
+            this.importItem = new JMenuItem("Importar", new ImageIcon(Toolkit.getDefaultToolkit().getImage(ToolMenuBar.class.getResource("/icon/bar/import.png"))));
             this.fileMenu.add(this.importItem);
         }
         {
-            this.exportItem = new JMenuItem("Exportar");
+            this.exportItem = new JMenuItem("Exportar", new ImageIcon(Toolkit.getDefaultToolkit().getImage(ToolMenuBar.class.getResource("/icon/bar/export.png"))));
             this.fileMenu.add(this.exportItem);
         }
         {
-            this.configItem = new JMenuItem("Configuracion");
+            this.configItem = new JMenuItem("Configuracion", new ImageIcon(Toolkit.getDefaultToolkit().getImage(ToolMenuBar.class.getResource("/icon/bar/configure.png"))));
             this.fileMenu.add(this.configItem);
         }
 
         this.fileMenu.addSeparator();
 
         {
-            this.exitItem = new JMenuItem("Salir");
+            this.exitItem = new JMenuItem("Salir", new ImageIcon(Toolkit.getDefaultToolkit().getImage(ToolMenuBar.class.getResource("/icon/bar/exit.png"))));
             this.fileMenu.add(this.exitItem);
         }
     }
@@ -98,15 +96,15 @@ public class ToolMenuBar extends JMenuBar {
         this.taskMenu = new JMenu("Tarea");
         this.add(this.taskMenu);
         {
-            this.addTask = new JMenuItem("Agregar tarea");
+            this.addTask = new JMenuItem("Agregar tarea", new ImageIcon(Toolkit.getDefaultToolkit().getImage(ToolMenuBar.class.getResource("/icon/bar/add.png"))));
             this.taskMenu.add(this.addTask);
         }
         {
-            this.modifyTask = new JMenuItem("Modificar tarea seleccionada");
+            this.modifyTask = new JMenuItem("Modificar tarea seleccionada", new ImageIcon(Toolkit.getDefaultToolkit().getImage(ToolMenuBar.class.getResource("/icon/bar/modify.png"))));
             this.taskMenu.add(this.modifyTask);
         }
         {
-            this.deleteTask = new JMenuItem("Eliminar tarea seleccionada");
+            this.deleteTask = new JMenuItem("Eliminar tarea seleccionada", new ImageIcon(Toolkit.getDefaultToolkit().getImage(ToolMenuBar.class.getResource("/icon/bar/delete.png"))));
             this.taskMenu.add(this.deleteTask);
         }
     }
@@ -118,15 +116,15 @@ public class ToolMenuBar extends JMenuBar {
         this.helpMenu = new JMenu("Ayuda");
         this.add(this.helpMenu);
         {
-            this.viewOnGithub = new JMenuItem("Ver el repositorio");
+            this.viewOnGithub = new JMenuItem("Ver el repositorio", new ImageIcon(Toolkit.getDefaultToolkit().getImage(ToolMenuBar.class.getResource("/icon/bar/github.png"))));
             this.helpMenu.add(this.viewOnGithub);
         }
         {
-            this.goToWebSite = new JMenuItem("Ir al sitio web");
+            this.goToWebSite = new JMenuItem("Ir al sitio web", new ImageIcon(Toolkit.getDefaultToolkit().getImage(ToolMenuBar.class.getResource("/icon/bar/web.png"))));
             this.helpMenu.add(this.goToWebSite);
         }
         {
-            this.showHelp = new JMenuItem("Acerca de Smazer");
+            this.showHelp = new JMenuItem("Acerca de Smazer", new ImageIcon(Toolkit.getDefaultToolkit().getImage(ToolMenuBar.class.getResource("/icon/bar/about.png"))));
             this.helpMenu.add(this.showHelp);
         }
     }
