@@ -58,7 +58,7 @@ public class TrayIconController {
         this.popupMenu.addExitMenuAction(e -> this.exitProgram());
 
         this.trayIcon = new TrayIcon(
-                Toolkit.getDefaultToolkit().createImage(TrayIconController.class.getResource("/icon/tray-icon.png")),
+                Toolkit.getDefaultToolkit().createImage(TrayIconController.class.getResource("/image/icon.png")),
                 "Smazer", this.popupMenu);
 
         try {
