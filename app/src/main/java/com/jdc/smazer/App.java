@@ -6,6 +6,8 @@ import java.util.logging.Logger;
 
 import javax.swing.*;
 
+import com.jdc.smazer.control.ViewController;
+
 /**
  * Esta es la clase principal la cual es llamada para iniciar el programa.
  * 
@@ -25,7 +27,9 @@ public class App {
             try {
                 UIManager.LookAndFeelInfo[] looks = UIManager.getInstalledLookAndFeels();
                 UIManager.setLookAndFeel(looks[looks.length - 1].getClassName());
-                // the code
+                ViewController controller = new ViewController();
+                ViewController.localInstance = controller;
+                controller.start();
             } catch (Exception ex) {
                 Logger.getLogger(App.class.getName()).log(Level.SEVERE, ex.getMessage());
             }
