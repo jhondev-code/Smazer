@@ -20,7 +20,7 @@ class DataBaseInitializer extends DataBaseConnection {
     /**
      * Logger usado para mostrar mensajes con los diferentes niveles.
      */
-    private Logger logger = Logger.getLogger(DataBaseInitializer.class.getName());
+    private final Logger logger = Logger.getLogger(DataBaseInitializer.class.getName());
 
     /**
      * Constructor por defecto, no inicializa nada.
