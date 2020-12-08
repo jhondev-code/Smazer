@@ -80,9 +80,9 @@ public class Task {
         this.setTaskName(name);
         this.setTaskDescription(description);
         String[] parts = startTime.split(":");
-        this.setTaskStartTime(LocalTime.of(Integer.valueOf(parts[0]), Integer.valueOf(parts[1]), Integer.valueOf(parts[2])));
+        this.setTaskStartTime(LocalTime.of(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2])));
         parts = endTime.split(":");
-        this.setTaskEndTime(LocalTime.of(Integer.valueOf(parts[0]), Integer.valueOf(parts[1]), Integer.valueOf(parts[2])));
+        this.setTaskEndTime(LocalTime.of(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2])));
     }
 
     /**
