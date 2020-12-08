@@ -22,7 +22,7 @@ import com.jdc.smazer.model.Task;
  */
 public class TaskConnection extends DataBaseConnection {
 
-    private Logger logger = Logger.getLogger(TaskConnection.class.getName());
+    private final Logger logger = Logger.getLogger(TaskConnection.class.getName());
 
     /**
      * Constructor por defecto el cual invoca al constructor de la clase padre con
