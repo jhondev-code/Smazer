@@ -20,6 +20,15 @@ public class MainWindow extends JFrame {
     public MainWindow() {
         super("Smazer");
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/icon/win-icon.png")));
+        this.configureWindow();
+    }
+
+    /**
+     * Este metodo se usa solamente para establecer la configuracion de la ventana.
+     */
+    private void configureWindow() {
+        this.setSize(800, 500);
+        this.setLocationRelativeTo(null);
     }
 
 }
