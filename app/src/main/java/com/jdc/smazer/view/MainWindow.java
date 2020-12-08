@@ -19,7 +19,7 @@ public class MainWindow extends JFrame {
      */
     public MainWindow() {
         super("Smazer");
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/icon/win-icon.png")));
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/image/icon.png")));
         this.configureWindow();
     }
 
