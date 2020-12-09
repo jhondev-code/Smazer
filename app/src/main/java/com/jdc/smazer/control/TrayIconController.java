@@ -9,12 +9,11 @@ import java.awt.SystemTray;
 import java.awt.Toolkit;
 import java.awt.TrayIcon;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.swing.JFrame;
 
 import com.jdc.smazer.view.component.TrayIconItems;
+
+import org.tinylog.Logger;
 
 /**
  * Esta clase es usada para poder manipular el icono de la bandeja, con dicho
@@ -41,11 +40,6 @@ public class TrayIconController {
     private final TrayIcon trayIcon;
 
     /**
-     * Este logger es usado para mostrar mensajes de depuracion en la consola.
-     */
-    private final Logger logger = Logger.getLogger(TrayIconController.class.getName());
-
-    /**
      * Este constructor inicia solicitando la instancia de la ventana que lo invoca
      * e iniciando la lista en la cual se almacenaran los botones de opciones.
      * 
@@ -63,8 +57,8 @@ public class TrayIconController {
 
         try {
             SystemTray.getSystemTray().add(this.trayIcon);
-        } catch (AWTException e) {
-            this.logger.log(Level.SEVERE, e.getMessage());
+        } catch (AWTException ex) {
+            Logger.error(ex);
         }
     }
 

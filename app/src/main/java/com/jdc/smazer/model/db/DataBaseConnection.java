@@ -4,8 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.tinylog.Logger;
 
 import org.sqlite.JDBC;
 
@@ -16,11 +15,6 @@ import org.sqlite.JDBC;
  * @version 1.0.0
  */
 public abstract class DataBaseConnection {
-
-    /**
-     * Este logger es usado para mostrar los mensajes en la consola.
-     */
-    private Logger logger = Logger.getLogger(DataBaseConnection.class.getName());
 
     /**
      * Usado para poder crear Resulsets, Statements, etc.
@@ -38,9 +32,9 @@ public abstract class DataBaseConnection {
      */
     public DataBaseConnection() {
         if (this.loadDriver()) {
-            this.logger.log(Level.INFO, "El driver se cargo correctamente");
+            Logger.info("El driver se cargo correctamente");
         } else {
-            this.logger.log(Level.SEVERE, "No se pudo cargar el driver");
+            Logger.error("No se pudo cargar el driver");
             // si no se puede cargar el driver se procede a finalizar al programa
             System.exit(1);
         }
@@ -56,6 +50,7 @@ public abstract class DataBaseConnection {
             Class.forName("org.sqlite.JDBC");
             this.driverState = true;
         } catch (ClassNotFoundException cnf) {
+            Logger.error(cnf);
             this.driverState = false;
         }
 

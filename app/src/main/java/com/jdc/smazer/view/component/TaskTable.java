@@ -19,12 +19,13 @@ public class TaskTable extends JTable {
     /**
      * Este es el modelo de tabla que se usara para colocar las tareas.
      */
-    private DefaultTableModel tableModel;
+    private final DefaultTableModel tableModel;
 
     /**
      * Este constructor inicia estableciendo el modelo de la tabla por defecto.
      */
     public TaskTable() {
+        super();
         this.tableModel = new DefaultTableModel(null,
                 new String[] { "Nombre", "Descripcion", "Estado", "Inicia", "Termina" });
         this.setModel(this.tableModel);

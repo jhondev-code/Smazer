@@ -2,10 +2,9 @@ package com.jdc.smazer.model.io;
 
 import java.sql.Statement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import com.jdc.smazer.model.db.DataBaseConnection;
+import org.tinylog.Logger;
 
 /**
  * Esta clase es usada para poder crear la tabla inicial de la base de datos, es
@@ -16,11 +15,6 @@ import com.jdc.smazer.model.db.DataBaseConnection;
  * @version 1.0.0
  */
 class DataBaseInitializer extends DataBaseConnection {
-
-    /**
-     * Logger usado para mostrar mensajes con los diferentes niveles.
-     */
-    private final Logger logger = Logger.getLogger(DataBaseInitializer.class.getName());
 
     /**
      * Constructor por defecto, no inicializa nada.
@@ -40,28 +34,28 @@ class DataBaseInitializer extends DataBaseConnection {
                 try {
                     statement = this.getConnection().createStatement();
                     statement.executeUpdate(sqlQuery);
-                } catch (SQLException e) {
-                    this.logger.log(Level.SEVERE, e.getMessage());
+                } catch (SQLException ex) {
+                    Logger.error(ex);
                 } finally {
                     if (statement != null) {
                         try {
                             statement.close();
-                        } catch (SQLException e) {
-                            this.logger.log(Level.SEVERE, e.getMessage());
+                        } catch (SQLException ex) {
+                            Logger.error(ex);
                         }
                     }
                 }
             } else {
-                this.logger.log(Level.SEVERE, "No se puede abrir una conexion.");
+                Logger.error("No se puede abrir una conexion.");
             }
         } catch (SQLException ex) {
-            this.logger.log(Level.SEVERE, ex.getMessage());
+            Logger.error(ex);
         } finally {
             if (this.isConnectionOpened()) {
                 try {
                     this.close();
-                } catch (SQLException e) {
-                    this.logger.log(Level.SEVERE, e.getMessage());
+                } catch (SQLException ex) {
+                    Logger.error(ex);
                 }
             }
         }

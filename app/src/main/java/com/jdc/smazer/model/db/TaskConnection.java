@@ -8,8 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
-import java.util.logging.Logger;
-import java.util.logging.Level;
+import org.tinylog.Logger;
 
 import com.jdc.smazer.model.Task;
 
@@ -21,8 +20,6 @@ import com.jdc.smazer.model.Task;
  * @version 1.0.0
  */
 public class TaskConnection extends DataBaseConnection {
-
-    private final Logger logger = Logger.getLogger(TaskConnection.class.getName());
 
     /**
      * Constructor por defecto el cual invoca al constructor de la clase padre con
@@ -46,28 +43,28 @@ public class TaskConnection extends DataBaseConnection {
                 PreparedStatement statement = null;
                 try {
                     statement = this.getConnection().prepareStatement(sqlQuery);
-                    statement.setString(0, task.getTaskName());
-                    statement.setString(1, task.getTaskDescription());
-                    statement.setString(2, task.getTaskStartTime().getHour() + ":" + task.getTaskStartTime().getMinute()
+                    statement.setString(1, task.getTaskName());
+                    statement.setString(2, task.getTaskDescription());
+                    statement.setString(3, task.getTaskStartTime().getHour() + ":" + task.getTaskStartTime().getMinute()
                             + ":" + task.getTaskStartTime().getSecond());
-                    statement.setString(3, task.getTaskEndTime().getHour() + ":" + task.getTaskEndTime().getMinute()
+                    statement.setString(4, task.getTaskEndTime().getHour() + ":" + task.getTaskEndTime().getMinute()
                             + ":" + task.getTaskEndTime().getSecond());
                     try {
                         statement.executeUpdate();
                         return true;
-                    } catch (SQLException e) {
-                        this.logger.log(Level.SEVERE, e.getMessage());
+                    } catch (SQLException ex) {
+                        Logger.error(ex);
                     }
                 } catch (SQLException ex) {
-                    this.logger.log(Level.SEVERE, ex.getMessage());
+                    Logger.error(ex);
                 } finally {
                     this.closeStatement(statement);
                 }
             } else {
-                this.logger.log(Level.SEVERE, "No se ha podido abrir conexion con la base de datos.");
+                Logger.warn("No se ha podido abrir una conexion con la base de datos.");
             }
         } catch (SQLException ex) {
-            this.logger.log(Level.SEVERE, ex.getMessage());
+            Logger.error(ex);
         } finally {
             this.closeConnection();
         }
@@ -89,16 +86,16 @@ public class TaskConnection extends DataBaseConnection {
                 try {
                     statement = this.getConnection().createStatement();
                     return statement.execute(sqlQuery);
-                } catch (SQLException e) {
-                    this.logger.log(Level.SEVERE, e.getMessage());
+                } catch (SQLException ex) {
+                    Logger.error(ex);
                 } finally {
                     this.closeStatement(statement);
                 }
             } else {
-                this.logger.log(Level.SEVERE, "No se ha podido abrir conexion con la base de datos.");
+                Logger.warn("No se ha podido abrir conexion con la base de datos.");
             }
         } catch (SQLException ex) {
-            this.logger.log(Level.SEVERE, ex.getMessage());
+            Logger.error(ex);
         } finally {
             this.closeConnection();
         }
@@ -128,22 +125,22 @@ public class TaskConnection extends DataBaseConnection {
                         try {
                             resultSet.close();
                         } catch (Exception ex) {
-                            this.logger.log(Level.SEVERE, ex.getMessage());
+                            Logger.error(ex);
                         }
                         return list;
                     } catch (SQLException ex) {
-                        this.logger.log(Level.SEVERE, ex.getMessage());
+                        Logger.error(ex);
                     }
                 } catch (SQLException ex) {
-                    this.logger.log(Level.SEVERE, ex.getMessage());
+                    Logger.error(ex);
                 } finally {
                     this.closeStatement(statement);
                 }
             } else {
-                this.logger.log(Level.SEVERE, "No se puede cerrar la conexion.");
+                Logger.error("No se puede cerrar la conexion.");
             }
         } catch (SQLException ex) {
-            this.logger.log(Level.SEVERE, ex.getMessage());
+            Logger.error(ex);
         } finally {
             this.closeConnection();
         }
@@ -157,12 +154,12 @@ public class TaskConnection extends DataBaseConnection {
         if (this.isConnectionOpened()) {
             try {
                 if (this.close()) {
-                    this.logger.log(Level.INFO, "Conexion cerrada con exito.");
+                    Logger.info("Conexion cerrada con exito.");
                 } else {
-                    this.logger.log(Level.SEVERE, "No se puede cerrar la conexion.");
+                    Logger.error("No se puede cerrar la conexion.");
                 }
-            } catch (Exception e) {
-                this.logger.log(Level.SEVERE, e.getMessage());
+            } catch (Exception ex) {
+                Logger.error(ex);
             }
         }
     }
@@ -171,8 +168,8 @@ public class TaskConnection extends DataBaseConnection {
         if (st != null) {
             try {
                 st.close();
-            } catch (Exception e) {
-                this.logger.log(Level.SEVERE, e.getMessage());
+            } catch (Exception ex) {
+                Logger.error(ex);
             }
         }
     }

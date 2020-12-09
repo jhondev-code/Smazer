@@ -1,7 +1,10 @@
 package com.jdc.smazer.model.io;
 
+import org.tinylog.Logger;
+
 import java.io.File;
 import java.io.IOException;
+
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
@@ -89,7 +92,8 @@ public class HomeManager {
             public Boolean run() {
                 try {
                     return b.createNewFile();
-                } catch (IOException e) {
+                } catch (IOException ex) {
+                    Logger.error(ex);
                     return false;
                 } finally {
                     new DataBaseInitializer().initializeDateBase();

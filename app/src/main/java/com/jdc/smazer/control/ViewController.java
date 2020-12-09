@@ -1,14 +1,23 @@
 package com.jdc.smazer.control;
 
+import com.jdc.smazer.model.Task;
+import com.jdc.smazer.model.db.TaskConnection;
 import com.jdc.smazer.model.io.HomeManager;
 import com.jdc.smazer.view.MainWindow;
 import com.jdc.smazer.view.component.TaskTable;
 import com.jdc.smazer.view.component.ToolMenuBar;
 
+import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import static javax.swing.JOptionPane.*;
+import java.util.List;
+
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
+import static javax.swing.JOptionPane.showConfirmDialog;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  * Esta clase es la que enlaza todos los componentes dentro de la interfaz
@@ -82,7 +91,7 @@ public class ViewController {
             if (this.homeManager.checkDataBase()) {
                 this.mainWindow.setJMenuBar(this.toolMenuBar);
                 this.initMenuBar();
-                this.mainWindow.add(this.taskTable);
+                this.mainWindow.getContentPane().add(this.taskTable, BorderLayout.CENTER);
                 this.mainWindow.addWindowListener(this.mainWindowAdapter);
                 this.mainWindow.setVisible(true);
                 this.loadTasks();
@@ -139,7 +148,11 @@ public class ViewController {
      * la tabla.
      */
     private void loadTasks() {
-        //
+        TaskConnection connection = new TaskConnection();
+        List<Task> tasks = connection.getTasks();
+        if (tasks != null && tasks.size() > 0) {
+            tasks.forEach(this.taskTable::addTask);
+        }
     }
 
     public TrayIconController getTrayIconController() {

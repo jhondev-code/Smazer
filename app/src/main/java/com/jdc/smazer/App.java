@@ -1,12 +1,10 @@
 package com.jdc.smazer;
 
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.swing.*;
-
 import com.jdc.smazer.control.ViewController;
+import org.tinylog.Logger;
+
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 /**
  * Esta es la clase principal la cual es llamada para iniciar el programa.
@@ -31,7 +29,7 @@ public class App {
                 ViewController.localInstance = controller;
                 controller.start();
             } catch (Exception ex) {
-                Logger.getLogger(App.class.getName()).log(Level.SEVERE, ex.getMessage());
+                Logger.error(ex);
             }
         });
     }
