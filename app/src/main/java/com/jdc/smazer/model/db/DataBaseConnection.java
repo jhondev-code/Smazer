@@ -3,8 +3,11 @@ package com.jdc.smazer.model.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.sqlite.JDBC;
 
 /**
  * Esta clase es usada para poder manejar conexiones con la base de datos.
@@ -75,7 +78,7 @@ public abstract class DataBaseConnection {
      */
     public boolean open() throws SQLException {
         if (this.isDriverLoaded()) {
-            this.dataBaseConnection = DriverManager.getConnection("root");
+            this.dataBaseConnection = DriverManager.getConnection(JDBC.PREFIX + System.getProperty("user.home") + "/smazer/dates.db", "root", "");
         }
 
         return this.dataBaseConnection != null;
