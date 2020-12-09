@@ -3,6 +3,7 @@ package com.jdc.smazer.view;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import java.awt.BorderLayout;
 
 /**
  * Esta clase es usada para crear la ventana principal del programa. Aqui se
@@ -19,6 +20,7 @@ public class MainWindow extends JFrame {
      */
     public MainWindow() {
         super("Smazer");
+        this.getContentPane().setLayout(new BorderLayout());
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/image/icon.png")));
         this.configureWindow();
     }
