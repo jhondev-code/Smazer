@@ -19,6 +19,11 @@ repositories {
 dependencies {
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13'
+    // https://mvnrepository.com/artifact/org.tinylog/tinylog-impl
+    compile group: 'org.tinylog', name: 'tinylog-impl', version: '2.2.1'
+    // https://mvnrepository.com/artifact/org.tinylog/tinylog-api
+    compile group: 'org.tinylog', name: 'tinylog-api', version: '2.2.1'
+
     // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
     compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.32.3.2'
 }
