@@ -15,6 +15,16 @@ import javax.swing.UIManager;
 public class App {
 
     /**
+     * Enlace del repositorio del proyecto.
+     */
+    public static final String PROJECT_REPOSITORY = "https://www.github.com/jhondev-code/smazer";
+
+    /**
+     * Enlace de mi sitio web.
+     */
+    public static final String WEB_SITE = "https://jhondev-code.github.io/";
+
+    /**
      * Este es el metodo principal el cual inicia todo el programa.
      * 
      * @param args argumentos pasados por consola. Por ahora no se requieren
