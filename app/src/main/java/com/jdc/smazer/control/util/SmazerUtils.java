@@ -1,4 +1,4 @@
-package com.jdc.smzer.control.util;
+package com.jdc.smazer.control.util;
 
 import java.awt.Desktop;
 
@@ -21,7 +21,7 @@ public class SmazerUtils {
         try {
             Desktop.getDesktop().browse(new URI(url));
         } catch(Exception ex) {
-            Logger.log(ex);
+            Logger.error(ex);
         }
     }
 
