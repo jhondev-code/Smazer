@@ -1,11 +1,14 @@
 package com.jdc.smazer.control;
 
+import com.jdc.smazer.App;
+import com.jdc.smazer.control.util.SmazerUtils;
 import com.jdc.smazer.model.Task;
 import com.jdc.smazer.model.db.TaskConnection;
 import com.jdc.smazer.model.io.HomeManager;
 import com.jdc.smazer.view.MainWindow;
 import com.jdc.smazer.view.component.TaskTable;
 import com.jdc.smazer.view.component.ToolMenuBar;
+import com.jdc.smazer.view.window.AboutDialog;
 
 import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
@@ -134,12 +137,15 @@ public class ViewController {
         });
 
         this.toolMenuBar.addViewRepositoryAction(e -> {
+            SmazerUtils.browse(App.PROJECT_REPOSITORY);
         });
 
         this.toolMenuBar.addGoWebSiteAction(e -> {
+            SmazerUtils.browse(App.WEB_SITE);
         });
 
         this.toolMenuBar.addShowHelpAction(e -> {
+            new AboutDialog(this.mainWindow).setVisible(true);
         });
     }
 
